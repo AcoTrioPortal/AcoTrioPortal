@@ -1,0 +1,977 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HospitalManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BusinessUnits">
+          <Key>
+            <PropertyRef Name="BusinessUnitsID" />
+          </Key>
+          <Property Name="BusinessUnitsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BUName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDT" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastUpdatedDT" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CBSA">
+          <Key>
+            <PropertyRef Name="CbsaID" />
+          </Key>
+          <Property Name="CbsaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CbsaCode" Type="int" Nullable="false" />
+          <Property Name="CbsaName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ZipClass" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDT" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastUpdatedDT" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollateralInfo">
+          <Key>
+            <PropertyRef Name="CollateralInfoId" />
+          </Key>
+          <Property Name="CollateralID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Path" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FileType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDT" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBY" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastUpdatedDT" Type="datetime" Nullable="false" />
+          <Property Name="CollateralInfoId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CollateralTypes">
+          <Key>
+            <PropertyRef Name="CollateralID" />
+          </Key>
+          <Property Name="CollateralID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CollateralType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDT" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastUpdatedDT" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GeoTypes">
+          <Key>
+            <PropertyRef Name="GeoID" />
+          </Key>
+          <Property Name="GeoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GeoName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDT" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastUpdatedDT" Type="datetime" Nullable="false" />
+          <Property Name="GeoInfo" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="Group_ID" />
+          </Key>
+          <Property Name="Group_ID" Type="int" Nullable="false" />
+          <Property Name="Geo_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HospitalProviderMapping">
+          <Key>
+            <PropertyRef Name="HospitalPin" />
+            <PropertyRef Name="PcpId" />
+          </Key>
+          <Property Name="HospitalPin" Type="int" Nullable="false" />
+          <Property Name="PcpId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hospitals">
+          <Key>
+            <PropertyRef Name="HospitalPin" />
+          </Key>
+          <Property Name="HospitalPin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HospitalName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LocationID" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDT" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastUpdatedDT" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="LocationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ZipCode" Type="int" Nullable="false" />
+          <Property Name="City" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="County" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Latitude" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Longitude" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDT" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastUpdatedDT" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MapTypes">
+          <Key>
+            <PropertyRef Name="MapTypeID" />
+          </Key>
+          <Property Name="MapTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MapTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDT" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastUpdatedDT" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PCP">
+          <Key>
+            <PropertyRef Name="PcpID" />
+          </Key>
+          <Property Name="PcpID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SpecialityID" Type="int" Nullable="false" />
+          <Property Name="LocationID" Type="int" Nullable="false" />
+          <Property Name="BusinessUnitsID" Type="int" Nullable="false" />
+          <Property Name="GeoID" Type="int" Nullable="false" />
+          <Property Name="CbsaID" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDT" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastUpdatedDT" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Plan">
+          <Key>
+            <PropertyRef Name="PlanID" />
+          </Key>
+          <Property Name="PlanID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Trio" Type="bit" Nullable="false" />
+          <Property Name="SN" Type="bit" Nullable="false" />
+          <Property Name="Full" Type="bit" Nullable="false" />
+          <Property Name="LocationID" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDT" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastUpdatedDT" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProvideGroupMapping">
+          <Key>
+            <PropertyRef Name="PcpId" />
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="PcpId" Type="int" Nullable="false" />
+          <Property Name="GroupId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Speciality">
+          <Key>
+            <PropertyRef Name="SpecialityID" />
+          </Key>
+          <Property Name="SpecialityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SpecialityName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDT" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastUpdateDT" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SpecialityPCPMapping">
+          <Key>
+            <PropertyRef Name="SpecialityId" />
+            <PropertyRef Name="PcpId" />
+          </Key>
+          <Property Name="SpecialityId" Type="int" Nullable="false" />
+          <Property Name="PcpId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_CollateralInfo_CollateralTypes">
+          <End Role="CollateralTypes" Type="Self.CollateralTypes" Multiplicity="1" />
+          <End Role="CollateralInfo" Type="Self.CollateralInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CollateralTypes">
+              <PropertyRef Name="CollateralID" />
+            </Principal>
+            <Dependent Role="CollateralInfo">
+              <PropertyRef Name="CollateralID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HospitalProviderMapping_Hospitals">
+          <End Role="Hospitals" Type="Self.Hospitals" Multiplicity="1" />
+          <End Role="HospitalProviderMapping" Type="Self.HospitalProviderMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hospitals">
+              <PropertyRef Name="HospitalPin" />
+            </Principal>
+            <Dependent Role="HospitalProviderMapping">
+              <PropertyRef Name="HospitalPin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HospitalProviderMapping_PCP">
+          <End Role="PCP" Type="Self.PCP" Multiplicity="1" />
+          <End Role="HospitalProviderMapping" Type="Self.HospitalProviderMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PCP">
+              <PropertyRef Name="PcpID" />
+            </Principal>
+            <Dependent Role="HospitalProviderMapping">
+              <PropertyRef Name="PcpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hospitals_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="Hospitals" Type="Self.Hospitals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="Hospitals">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PCP_BusinessUnits">
+          <End Role="BusinessUnits" Type="Self.BusinessUnits" Multiplicity="1" />
+          <End Role="PCP" Type="Self.PCP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessUnits">
+              <PropertyRef Name="BusinessUnitsID" />
+            </Principal>
+            <Dependent Role="PCP">
+              <PropertyRef Name="BusinessUnitsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PCP_CBSA">
+          <End Role="CBSA" Type="Self.CBSA" Multiplicity="1" />
+          <End Role="PCP" Type="Self.PCP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CBSA">
+              <PropertyRef Name="CbsaID" />
+            </Principal>
+            <Dependent Role="PCP">
+              <PropertyRef Name="CbsaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PCP_GeoTypes">
+          <End Role="GeoTypes" Type="Self.GeoTypes" Multiplicity="1" />
+          <End Role="PCP" Type="Self.PCP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GeoTypes">
+              <PropertyRef Name="GeoID" />
+            </Principal>
+            <Dependent Role="PCP">
+              <PropertyRef Name="GeoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PCP_Speciality">
+          <End Role="Speciality" Type="Self.Speciality" Multiplicity="1" />
+          <End Role="PCP" Type="Self.PCP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Speciality">
+              <PropertyRef Name="SpecialityID" />
+            </Principal>
+            <Dependent Role="PCP">
+              <PropertyRef Name="SpecialityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plan_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="Plan" Type="Self.Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="Plan">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProvideGroupMapping_Group">
+          <End Role="Group" Type="Self.Group" Multiplicity="1" />
+          <End Role="ProvideGroupMapping" Type="Self.ProvideGroupMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="Group_ID" />
+            </Principal>
+            <Dependent Role="ProvideGroupMapping">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProvideGroupMapping_PCP">
+          <End Role="PCP" Type="Self.PCP" Multiplicity="1" />
+          <End Role="ProvideGroupMapping" Type="Self.ProvideGroupMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PCP">
+              <PropertyRef Name="PcpID" />
+            </Principal>
+            <Dependent Role="ProvideGroupMapping">
+              <PropertyRef Name="PcpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecialityPCPMapping_PCP">
+          <End Role="PCP" Type="Self.PCP" Multiplicity="1" />
+          <End Role="SpecialityPCPMapping" Type="Self.SpecialityPCPMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PCP">
+              <PropertyRef Name="PcpID" />
+            </Principal>
+            <Dependent Role="SpecialityPCPMapping">
+              <PropertyRef Name="PcpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecialityPCPMapping_Speciality">
+          <End Role="Speciality" Type="Self.Speciality" Multiplicity="1" />
+          <End Role="SpecialityPCPMapping" Type="Self.SpecialityPCPMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Speciality">
+              <PropertyRef Name="SpecialityID" />
+            </Principal>
+            <Dependent Role="SpecialityPCPMapping">
+              <PropertyRef Name="SpecialityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HospitalManagementModelStoreContainer">
+          <EntitySet Name="BusinessUnits" EntityType="Self.BusinessUnits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CBSA" EntityType="Self.CBSA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CollateralInfo" EntityType="Self.CollateralInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CollateralTypes" EntityType="Self.CollateralTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GeoTypes" EntityType="Self.GeoTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Group" EntityType="Self.Group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HospitalProviderMapping" EntityType="Self.HospitalProviderMapping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hospitals" EntityType="Self.Hospitals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MapTypes" EntityType="Self.MapTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PCP" EntityType="Self.PCP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plan" EntityType="Self.Plan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProvideGroupMapping" EntityType="Self.ProvideGroupMapping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Speciality" EntityType="Self.Speciality" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SpecialityPCPMapping" EntityType="Self.SpecialityPCPMapping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CollateralInfo_CollateralTypes" Association="Self.FK_CollateralInfo_CollateralTypes">
+            <End Role="CollateralTypes" EntitySet="CollateralTypes" />
+            <End Role="CollateralInfo" EntitySet="CollateralInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HospitalProviderMapping_Hospitals" Association="Self.FK_HospitalProviderMapping_Hospitals">
+            <End Role="Hospitals" EntitySet="Hospitals" />
+            <End Role="HospitalProviderMapping" EntitySet="HospitalProviderMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HospitalProviderMapping_PCP" Association="Self.FK_HospitalProviderMapping_PCP">
+            <End Role="PCP" EntitySet="PCP" />
+            <End Role="HospitalProviderMapping" EntitySet="HospitalProviderMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hospitals_Location" Association="Self.FK_Hospitals_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="Hospitals" EntitySet="Hospitals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PCP_BusinessUnits" Association="Self.FK_PCP_BusinessUnits">
+            <End Role="BusinessUnits" EntitySet="BusinessUnits" />
+            <End Role="PCP" EntitySet="PCP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PCP_CBSA" Association="Self.FK_PCP_CBSA">
+            <End Role="CBSA" EntitySet="CBSA" />
+            <End Role="PCP" EntitySet="PCP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PCP_GeoTypes" Association="Self.FK_PCP_GeoTypes">
+            <End Role="GeoTypes" EntitySet="GeoTypes" />
+            <End Role="PCP" EntitySet="PCP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PCP_Speciality" Association="Self.FK_PCP_Speciality">
+            <End Role="Speciality" EntitySet="Speciality" />
+            <End Role="PCP" EntitySet="PCP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plan_Location" Association="Self.FK_Plan_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="Plan" EntitySet="Plan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProvideGroupMapping_Group" Association="Self.FK_ProvideGroupMapping_Group">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="ProvideGroupMapping" EntitySet="ProvideGroupMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProvideGroupMapping_PCP" Association="Self.FK_ProvideGroupMapping_PCP">
+            <End Role="PCP" EntitySet="PCP" />
+            <End Role="ProvideGroupMapping" EntitySet="ProvideGroupMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecialityPCPMapping_PCP" Association="Self.FK_SpecialityPCPMapping_PCP">
+            <End Role="PCP" EntitySet="PCP" />
+            <End Role="SpecialityPCPMapping" EntitySet="SpecialityPCPMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecialityPCPMapping_Speciality" Association="Self.FK_SpecialityPCPMapping_Speciality">
+            <End Role="Speciality" EntitySet="Speciality" />
+            <End Role="SpecialityPCPMapping" EntitySet="SpecialityPCPMapping" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HospitalManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BusinessUnit">
+          <Key>
+            <PropertyRef Name="BusinessUnitsID" />
+          </Key>
+          <Property Name="BusinessUnitsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BUName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDT" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdatedDT" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="PCPs" Relationship="Self.FK_PCP_BusinessUnits" FromRole="BusinessUnits" ToRole="PCP" />
+        </EntityType>
+        <EntityType Name="CBSA">
+          <Key>
+            <PropertyRef Name="CbsaID" />
+          </Key>
+          <Property Name="CbsaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CbsaCode" Type="Int32" Nullable="false" />
+          <Property Name="CbsaName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ZipClass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDT" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdatedDT" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="PCPs" Relationship="Self.FK_PCP_CBSA" FromRole="CBSA" ToRole="PCP" />
+        </EntityType>
+        <EntityType Name="CollateralInfo">
+          <Key>
+            <PropertyRef Name="CollateralInfoId" />
+          </Key>
+          <Property Name="CollateralID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Path" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FileType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDT" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdatedDT" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CollateralInfoId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CollateralType" Relationship="Self.FK_CollateralInfo_CollateralTypes" FromRole="CollateralInfo" ToRole="CollateralTypes" />
+        </EntityType>
+        <EntityType Name="CollateralType">
+          <Key>
+            <PropertyRef Name="CollateralID" />
+          </Key>
+          <Property Name="CollateralID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CollateralType1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDT" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdatedDT" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CollateralInfoes" Relationship="Self.FK_CollateralInfo_CollateralTypes" FromRole="CollateralTypes" ToRole="CollateralInfo" />
+        </EntityType>
+        <EntityType Name="GeoType">
+          <Key>
+            <PropertyRef Name="GeoID" />
+          </Key>
+          <Property Name="GeoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GeoName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDT" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdatedDT" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="GeoInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="PCPs" Relationship="Self.FK_PCP_GeoTypes" FromRole="GeoTypes" ToRole="PCP" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="Group_ID" />
+          </Key>
+          <Property Name="Group_ID" Type="Int32" Nullable="false" />
+          <Property Name="Geo_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="PCPs" Relationship="Self.ProvideGroupMapping" FromRole="Group" ToRole="PCP" />
+        </EntityType>
+        <EntityType Name="Hospital">
+          <Key>
+            <PropertyRef Name="HospitalPin" />
+          </Key>
+          <Property Name="HospitalPin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HospitalName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LocationID" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDT" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastUpdatedDT" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Location" Relationship="Self.FK_Hospitals_Location" FromRole="Hospitals" ToRole="Location" />
+          <NavigationProperty Name="PCPs" Relationship="Self.HospitalProviderMapping" FromRole="Hospitals" ToRole="PCP" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="LocationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ZipCode" Type="Int32" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="County" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Latitude" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Longitude" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDT" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdatedDT" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Hospitals" Relationship="Self.FK_Hospitals_Location" FromRole="Location" ToRole="Hospitals" />
+          <NavigationProperty Name="Plans" Relationship="Self.FK_Plan_Location" FromRole="Location" ToRole="Plan" />
+        </EntityType>
+        <EntityType Name="MapType">
+          <Key>
+            <PropertyRef Name="MapTypeID" />
+          </Key>
+          <Property Name="MapTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MapTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDT" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdatedDT" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="PCP">
+          <Key>
+            <PropertyRef Name="PcpID" />
+          </Key>
+          <Property Name="PcpID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SpecialityID" Type="Int32" Nullable="false" />
+          <Property Name="LocationID" Type="Int32" Nullable="false" />
+          <Property Name="BusinessUnitsID" Type="Int32" Nullable="false" />
+          <Property Name="GeoID" Type="Int32" Nullable="false" />
+          <Property Name="CbsaID" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDT" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdatedDT" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="BusinessUnit" Relationship="Self.FK_PCP_BusinessUnits" FromRole="PCP" ToRole="BusinessUnits" />
+          <NavigationProperty Name="CBSA" Relationship="Self.FK_PCP_CBSA" FromRole="PCP" ToRole="CBSA" />
+          <NavigationProperty Name="GeoType" Relationship="Self.FK_PCP_GeoTypes" FromRole="PCP" ToRole="GeoTypes" />
+          <NavigationProperty Name="Speciality" Relationship="Self.FK_PCP_Speciality" FromRole="PCP" ToRole="Speciality" />
+          <NavigationProperty Name="Hospitals" Relationship="Self.HospitalProviderMapping" FromRole="PCP" ToRole="Hospitals" />
+          <NavigationProperty Name="Groups" Relationship="Self.ProvideGroupMapping" FromRole="PCP" ToRole="Group" />
+          <NavigationProperty Name="Specialities" Relationship="Self.SpecialityPCPMapping" FromRole="PCP" ToRole="Speciality" />
+        </EntityType>
+        <EntityType Name="Plan">
+          <Key>
+            <PropertyRef Name="PlanID" />
+          </Key>
+          <Property Name="PlanID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Trio" Type="Boolean" Nullable="false" />
+          <Property Name="SN" Type="Boolean" Nullable="false" />
+          <Property Name="Full" Type="Boolean" Nullable="false" />
+          <Property Name="LocationID" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDT" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdatedDT" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Location" Relationship="Self.FK_Plan_Location" FromRole="Plan" ToRole="Location" />
+        </EntityType>
+        <EntityType Name="Speciality">
+          <Key>
+            <PropertyRef Name="SpecialityID" />
+          </Key>
+          <Property Name="SpecialityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SpecialityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDT" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdateDT" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="PCPs" Relationship="Self.FK_PCP_Speciality" FromRole="Speciality" ToRole="PCP" />
+          <NavigationProperty Name="PCPs1" Relationship="Self.SpecialityPCPMapping" FromRole="Speciality" ToRole="PCP" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_PCP_BusinessUnits">
+          <End Role="BusinessUnits" Type="Self.BusinessUnit" Multiplicity="1" />
+          <End Role="PCP" Type="Self.PCP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessUnits">
+              <PropertyRef Name="BusinessUnitsID" />
+            </Principal>
+            <Dependent Role="PCP">
+              <PropertyRef Name="BusinessUnitsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PCP_CBSA">
+          <End Role="CBSA" Type="Self.CBSA" Multiplicity="1" />
+          <End Role="PCP" Type="Self.PCP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CBSA">
+              <PropertyRef Name="CbsaID" />
+            </Principal>
+            <Dependent Role="PCP">
+              <PropertyRef Name="CbsaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CollateralInfo_CollateralTypes">
+          <End Role="CollateralTypes" Type="Self.CollateralType" Multiplicity="1" />
+          <End Role="CollateralInfo" Type="Self.CollateralInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CollateralTypes">
+              <PropertyRef Name="CollateralID" />
+            </Principal>
+            <Dependent Role="CollateralInfo">
+              <PropertyRef Name="CollateralID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PCP_GeoTypes">
+          <End Role="GeoTypes" Type="Self.GeoType" Multiplicity="1" />
+          <End Role="PCP" Type="Self.PCP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GeoTypes">
+              <PropertyRef Name="GeoID" />
+            </Principal>
+            <Dependent Role="PCP">
+              <PropertyRef Name="GeoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hospitals_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="Hospitals" Type="Self.Hospital" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="Hospitals">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plan_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="Plan" Type="Self.Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="Plan">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PCP_Speciality">
+          <End Role="Speciality" Type="Self.Speciality" Multiplicity="1" />
+          <End Role="PCP" Type="Self.PCP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Speciality">
+              <PropertyRef Name="SpecialityID" />
+            </Principal>
+            <Dependent Role="PCP">
+              <PropertyRef Name="SpecialityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="HospitalProviderMapping">
+          <End Role="Hospitals" Type="Self.Hospital" Multiplicity="*" />
+          <End Role="PCP" Type="Self.PCP" Multiplicity="*" />
+        </Association>
+        <Association Name="ProvideGroupMapping">
+          <End Role="Group" Type="Self.Group" Multiplicity="*" />
+          <End Role="PCP" Type="Self.PCP" Multiplicity="*" />
+        </Association>
+        <Association Name="SpecialityPCPMapping">
+          <End Role="PCP" Type="Self.PCP" Multiplicity="*" />
+          <End Role="Speciality" Type="Self.Speciality" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="HospitalManagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BusinessUnits" EntityType="Self.BusinessUnit" />
+          <EntitySet Name="CBSAs" EntityType="Self.CBSA" />
+          <EntitySet Name="CollateralInfoes" EntityType="Self.CollateralInfo" />
+          <EntitySet Name="CollateralTypes" EntityType="Self.CollateralType" />
+          <EntitySet Name="GeoTypes" EntityType="Self.GeoType" />
+          <EntitySet Name="Groups" EntityType="Self.Group" />
+          <EntitySet Name="Hospitals" EntityType="Self.Hospital" />
+          <EntitySet Name="Locations" EntityType="Self.Location" />
+          <EntitySet Name="MapTypes" EntityType="Self.MapType" />
+          <EntitySet Name="PCPs" EntityType="Self.PCP" />
+          <EntitySet Name="Plans" EntityType="Self.Plan" />
+          <EntitySet Name="Specialities" EntityType="Self.Speciality" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK_PCP_BusinessUnits" Association="Self.FK_PCP_BusinessUnits">
+            <End Role="BusinessUnits" EntitySet="BusinessUnits" />
+            <End Role="PCP" EntitySet="PCPs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PCP_CBSA" Association="Self.FK_PCP_CBSA">
+            <End Role="CBSA" EntitySet="CBSAs" />
+            <End Role="PCP" EntitySet="PCPs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CollateralInfo_CollateralTypes" Association="Self.FK_CollateralInfo_CollateralTypes">
+            <End Role="CollateralTypes" EntitySet="CollateralTypes" />
+            <End Role="CollateralInfo" EntitySet="CollateralInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PCP_GeoTypes" Association="Self.FK_PCP_GeoTypes">
+            <End Role="GeoTypes" EntitySet="GeoTypes" />
+            <End Role="PCP" EntitySet="PCPs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hospitals_Location" Association="Self.FK_Hospitals_Location">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Hospitals" EntitySet="Hospitals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plan_Location" Association="Self.FK_Plan_Location">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Plan" EntitySet="Plans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PCP_Speciality" Association="Self.FK_PCP_Speciality">
+            <End Role="Speciality" EntitySet="Specialities" />
+            <End Role="PCP" EntitySet="PCPs" />
+          </AssociationSet>
+          <AssociationSet Name="HospitalProviderMapping" Association="Self.HospitalProviderMapping">
+            <End Role="Hospitals" EntitySet="Hospitals" />
+            <End Role="PCP" EntitySet="PCPs" />
+          </AssociationSet>
+          <AssociationSet Name="ProvideGroupMapping" Association="Self.ProvideGroupMapping">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="PCP" EntitySet="PCPs" />
+          </AssociationSet>
+          <AssociationSet Name="SpecialityPCPMapping" Association="Self.SpecialityPCPMapping">
+            <End Role="PCP" EntitySet="PCPs" />
+            <End Role="Speciality" EntitySet="Specialities" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HospitalManagementModelStoreContainer" CdmEntityContainer="HospitalManagementEntities">
+          <EntitySetMapping Name="BusinessUnits">
+            <EntityTypeMapping TypeName="HospitalManagementModel.BusinessUnit">
+              <MappingFragment StoreEntitySet="BusinessUnits">
+                <ScalarProperty Name="BusinessUnitsID" ColumnName="BusinessUnitsID" />
+                <ScalarProperty Name="BUName" ColumnName="BUName" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDT" ColumnName="CreatedDT" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="LastUpdatedDT" ColumnName="LastUpdatedDT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CBSAs">
+            <EntityTypeMapping TypeName="HospitalManagementModel.CBSA">
+              <MappingFragment StoreEntitySet="CBSA">
+                <ScalarProperty Name="CbsaID" ColumnName="CbsaID" />
+                <ScalarProperty Name="CbsaCode" ColumnName="CbsaCode" />
+                <ScalarProperty Name="CbsaName" ColumnName="CbsaName" />
+                <ScalarProperty Name="ZipClass" ColumnName="ZipClass" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDT" ColumnName="CreatedDT" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="LastUpdatedDT" ColumnName="LastUpdatedDT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollateralInfoes">
+            <EntityTypeMapping TypeName="HospitalManagementModel.CollateralInfo">
+              <MappingFragment StoreEntitySet="CollateralInfo">
+                <ScalarProperty Name="CollateralID" ColumnName="CollateralID" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDT" ColumnName="CreatedDT" />
+                <ScalarProperty Name="UpdatedBY" ColumnName="UpdatedBY" />
+                <ScalarProperty Name="LastUpdatedDT" ColumnName="LastUpdatedDT" />
+                <ScalarProperty Name="CollateralInfoId" ColumnName="CollateralInfoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollateralTypes">
+            <EntityTypeMapping TypeName="HospitalManagementModel.CollateralType">
+              <MappingFragment StoreEntitySet="CollateralTypes">
+                <ScalarProperty Name="CollateralID" ColumnName="CollateralID" />
+                <ScalarProperty Name="CollateralType1" ColumnName="CollateralType" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDT" ColumnName="CreatedDT" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="LastUpdatedDT" ColumnName="LastUpdatedDT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GeoTypes">
+            <EntityTypeMapping TypeName="HospitalManagementModel.GeoType">
+              <MappingFragment StoreEntitySet="GeoTypes">
+                <ScalarProperty Name="GeoID" ColumnName="GeoID" />
+                <ScalarProperty Name="GeoName" ColumnName="GeoName" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDT" ColumnName="CreatedDT" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="LastUpdatedDT" ColumnName="LastUpdatedDT" />
+                <ScalarProperty Name="GeoInfo" ColumnName="GeoInfo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Groups">
+            <EntityTypeMapping TypeName="HospitalManagementModel.Group">
+              <MappingFragment StoreEntitySet="Group">
+                <ScalarProperty Name="Group_ID" ColumnName="Group_ID" />
+                <ScalarProperty Name="Geo_Name" ColumnName="Geo_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hospitals">
+            <EntityTypeMapping TypeName="HospitalManagementModel.Hospital">
+              <MappingFragment StoreEntitySet="Hospitals">
+                <ScalarProperty Name="HospitalPin" ColumnName="HospitalPin" />
+                <ScalarProperty Name="HospitalName" ColumnName="HospitalName" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDT" ColumnName="CreatedDT" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="LastUpdatedDT" ColumnName="LastUpdatedDT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="HospitalManagementModel.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="County" ColumnName="County" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDT" ColumnName="CreatedDT" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="LastUpdatedDT" ColumnName="LastUpdatedDT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MapTypes">
+            <EntityTypeMapping TypeName="HospitalManagementModel.MapType">
+              <MappingFragment StoreEntitySet="MapTypes">
+                <ScalarProperty Name="MapTypeID" ColumnName="MapTypeID" />
+                <ScalarProperty Name="MapTypeName" ColumnName="MapTypeName" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDT" ColumnName="CreatedDT" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="LastUpdatedDT" ColumnName="LastUpdatedDT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PCPs">
+            <EntityTypeMapping TypeName="HospitalManagementModel.PCP">
+              <MappingFragment StoreEntitySet="PCP">
+                <ScalarProperty Name="PcpID" ColumnName="PcpID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="SpecialityID" ColumnName="SpecialityID" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="BusinessUnitsID" ColumnName="BusinessUnitsID" />
+                <ScalarProperty Name="GeoID" ColumnName="GeoID" />
+                <ScalarProperty Name="CbsaID" ColumnName="CbsaID" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDT" ColumnName="CreatedDT" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="LastUpdatedDT" ColumnName="LastUpdatedDT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plans">
+            <EntityTypeMapping TypeName="HospitalManagementModel.Plan">
+              <MappingFragment StoreEntitySet="Plan">
+                <ScalarProperty Name="PlanID" ColumnName="PlanID" />
+                <ScalarProperty Name="Trio" ColumnName="Trio" />
+                <ScalarProperty Name="SN" ColumnName="SN" />
+                <ScalarProperty Name="Full" ColumnName="Full" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDT" ColumnName="CreatedDT" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="LastUpdatedDT" ColumnName="LastUpdatedDT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Specialities">
+            <EntityTypeMapping TypeName="HospitalManagementModel.Speciality">
+              <MappingFragment StoreEntitySet="Speciality">
+                <ScalarProperty Name="SpecialityID" ColumnName="SpecialityID" />
+                <ScalarProperty Name="SpecialityName" ColumnName="SpecialityName" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDT" ColumnName="CreatedDT" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="LastUpdateDT" ColumnName="LastUpdateDT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="HospitalManagementModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="HospitalProviderMapping" TypeName="HospitalManagementModel.HospitalProviderMapping" StoreEntitySet="HospitalProviderMapping">
+            <EndProperty Name="Hospitals">
+              <ScalarProperty Name="HospitalPin" ColumnName="HospitalPin" />
+            </EndProperty>
+            <EndProperty Name="PCP">
+              <ScalarProperty Name="PcpID" ColumnName="PcpId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="ProvideGroupMapping" TypeName="HospitalManagementModel.ProvideGroupMapping" StoreEntitySet="ProvideGroupMapping">
+            <EndProperty Name="Group">
+              <ScalarProperty Name="Group_ID" ColumnName="GroupId" />
+            </EndProperty>
+            <EndProperty Name="PCP">
+              <ScalarProperty Name="PcpID" ColumnName="PcpId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="SpecialityPCPMapping" TypeName="HospitalManagementModel.SpecialityPCPMapping" StoreEntitySet="SpecialityPCPMapping">
+            <EndProperty Name="PCP">
+              <ScalarProperty Name="PcpID" ColumnName="PcpId" />
+            </EndProperty>
+            <EndProperty Name="Speciality">
+              <ScalarProperty Name="SpecialityID" ColumnName="SpecialityId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
