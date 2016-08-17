@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BSC.Trio.DAL.RepositoryManager
+namespace BSC.Trio.BAL.WebAPI
 {
-    class BaseRepository
+    class ConsumerController
     {
     }
 }

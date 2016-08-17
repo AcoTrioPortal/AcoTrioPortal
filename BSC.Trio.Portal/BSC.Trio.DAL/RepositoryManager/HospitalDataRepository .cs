@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BSC.Trio.DAL.RepositoryManager
 {
-    class BaseRepository
+    class HospitalDataRepository
     {
     }
 }
