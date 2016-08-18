@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5788EBBB-72F0-41DB-B581-3EB164301875}</ProjectGuid>
+    <ProjectGuid>{932B7989-4DA1-4D94-BFF5-020D8B97D9C8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BSC.Trio.Portal</RootNamespace>
-    <AssemblyName>BSC.Trio.Portal</AssemblyName>
+    <RootNamespace>BSC.Trio.DAL.RepositoryManager</RootNamespace>
+    <AssemblyName>BSC.Trio.DAL.RepositoryManager</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,7 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseRepository.cs" />
+    <Compile Include="HospitalDataRepository.cs" />
+    <Compile Include="LocationDataRepository.cs" />
+    <Compile Include="PcpDataRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

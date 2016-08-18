@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BSC.Trio.Portal")]
+[assembly: AssemblyTitle("BSC.Trio.DAL.TrioDataModel")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("BSC.Trio.Portal")]
+[assembly: AssemblyProduct("BSC.Trio.DAL.TrioDataModel")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("5788ebbb-72f0-41db-b581-3eb164301875")]
+[assembly: Guid("be2422ee-0338-4f5f-b385-cdafa7061698")]
 
 // Version information for an assembly consists of the following four values:
 //
